@@ -83,6 +83,56 @@ const questions = [
     ],
     explanation: 'Modern NICs use PCIe (PCI Express) — typically Gen 3, 4, or 5 — for high-bandwidth communication with the motherboard. Older NICs used AGP or ISA.',
   },
+  {
+    q: 'How many bits long is a standard MAC address?',
+    options: [
+      { text: '32 bits', correct: false },
+      { text: '48 bits', correct: true },
+      { text: '64 bits', correct: false },
+      { text: '128 bits', correct: false },
+    ],
+    explanation: 'A MAC address is 48 bits (6 bytes) long, typically written as six groups of two hexadecimal digits separated by colons or hyphens (e.g., 00:1A:2B:3C:4D:5E).',
+  },
+  {
+    q: 'What does "full-duplex" mean in networking?',
+    options: [
+      { text: 'Data can only be received, not sent', correct: false },
+      { text: 'Data can be sent and received at the same time', correct: true },
+      { text: 'Data is sent over two separate cables', correct: false },
+      { text: 'The connection speed is doubled', correct: false },
+    ],
+    explanation: 'Full-duplex means the NIC can send and receive data simultaneously. Half-duplex only allows one direction at a time, like a walkie-talkie.',
+  },
+  {
+    q: 'What is the typical Maximum Transmission Unit (MTU) for standard Ethernet?',
+    options: [
+      { text: '512 bytes', correct: false },
+      { text: '1500 bytes', correct: true },
+      { text: '4096 bytes', correct: false },
+      { text: '65535 bytes', correct: false },
+    ],
+    explanation: 'Standard Ethernet has an MTU of 1500 bytes — the largest payload a single frame can carry. Jumbo frames (up to ~9000 bytes) are used in some data centers.',
+  },
+  {
+    q: 'Which feature allows a NIC to wake a sleeping computer when a network packet arrives?',
+    options: [
+      { text: 'NAT Traversal', correct: false },
+      { text: 'Wake-on-LAN (WoL)', correct: true },
+      { text: 'DHCP Relay', correct: false },
+      { text: 'Port Mirroring', correct: false },
+    ],
+    explanation: 'Wake-on-LAN (WoL) sends a "magic packet" to the NIC\'s MAC address, which triggers the motherboard to power on the system — useful for remote management.',
+  },
+  {
+    q: 'What is the purpose of VLAN tagging on a NIC?',
+    options: [
+      { text: 'To encrypt network traffic', correct: false },
+      { text: 'To separate traffic into different virtual networks on the same physical NIC', correct: true },
+      { text: 'To increase the speed of the NIC', correct: false },
+      { text: 'To compress data before sending', correct: false },
+    ],
+    explanation: 'VLAN (Virtual LAN) tagging lets a single physical NIC handle traffic for multiple logical networks by inserting an 802.1Q tag into each Ethernet frame.',
+  },
 ]
 
 export default function Quiz() {
@@ -233,7 +283,7 @@ export default function Quiz() {
                   {score} / {questions.length}
                 </p>
                 <p className="text-text-muted font-body text-body mb-6">
-                  {score === 7 ? 'Perfect score! You nailed it.' : score >= 5 ? 'Great job! You know your NICs.' : score >= 3 ? 'Not bad — a quick review and you\'re set.' : 'Time to re-read the presentation!'}
+                  {score === 13 ? 'Perfect score! You nailed it.' : score >= 10 ? 'Great job! You know your NICs.' : score >= 6 ? 'Not bad — a quick review and you\'re set.' : 'Time to re-read the presentation!'}
                 </p>
                 <button
                   onClick={reset}

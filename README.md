@@ -22,7 +22,7 @@ Dark-mode, animated, scroll-driven presentation with 12 sections covering what N
 9. Future Advancements
 10. Fun Facts
 11. Bibliography
-12. Quiz (2 questions)
+12. Quiz (13 questions)
 
 ## Quick Start
 
