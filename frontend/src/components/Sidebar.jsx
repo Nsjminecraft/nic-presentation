@@ -20,6 +20,7 @@ export default function Sidebar() {
   const [activeSection, setActiveSection] = useState('hero')
   const [collapsed, setCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false)
 
   useEffect(() => {
     const handler = (e) => {
@@ -29,10 +30,23 @@ export default function Sidebar() {
     return () => window.removeEventListener('section-change', handler)
   }, [])
 
+  useEffect(() => {
+    const onResize = () => {
+      const mobile = window.innerWidth < 768
+      setIsMobile(mobile)
+      if (!mobile) setMobileOpen(false)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     setMobileOpen(false)
   }
+
+  const navWidth = isMobile ? 240 : (collapsed ? 64 : 240)
+  const navX = isMobile ? (mobileOpen ? 0 : -240) : 0
 
   return (
     <>
@@ -61,15 +75,9 @@ export default function Sidebar() {
 
       <motion.nav
         initial={false}
-        animate={{
-          x: 0,
-          width: typeof window !== 'undefined' && window.innerWidth < 768 ? 240 : (collapsed ? 64 : 240),
-        }}
-        className={`fixed left-0 top-0 h-screen z-40 bg-bg-surface/90 backdrop-blur-2xl border-r border-white/5 flex flex-col overflow-hidden transition-transform duration-300 ${
-          typeof window !== 'undefined' && window.innerWidth < 768
-            ? mobileOpen ? 'translate-x-0' : '-translate-x-full'
-            : ''
-        }`}
+        animate={{ x: navX, width: navWidth }}
+        transition={{ type: 'tween', duration: 0.3 }}
+        className="fixed left-0 top-0 h-screen z-40 bg-bg-surface/90 backdrop-blur-2xl border-r border-white/5 flex flex-col overflow-hidden"
     >
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-white/5 min-h-[64px]">

@@ -99,7 +99,7 @@ export default function Specs() {
           06 — Technical Specifications
         </motion.p>
         <motion.h2
-          className="font-heading text-section text-text-primary mb-4"
+          className="font-heading text-2xl md:text-section text-text-primary mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -147,7 +147,7 @@ export default function Specs() {
                 </p>
                 <p
                   className="font-heading font-bold mb-2"
-                  style={{ fontSize: '2.5rem', color: spec.color }}
+                  style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', color: spec.color }}
                 >
                   {spec.value}
                 </p>

@@ -168,7 +168,7 @@ export default function Quiz() {
           11 — Quiz
         </motion.p>
         <motion.h2
-          className="font-heading text-section text-text-primary mb-4"
+          className="font-heading text-2xl md:text-section text-text-primary mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -276,10 +276,10 @@ export default function Quiz() {
               {/* Glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan/5 to-accent-purple/5" />
               <div className="relative z-10">
-                <div className="text-6xl mb-4">
+                <div className="text-4xl md:text-6xl mb-4">
                   {score >= 6 ? '🎉' : score >= 4 ? '👍' : score >= 2 ? '📚' : '😅'}
                 </div>
-                <p className="font-heading text-display font-bold gradient-text mb-2">
+                <p className="font-heading text-3xl md:text-display font-bold gradient-text mb-2">
                   {score} / {questions.length}
                 </p>
                 <p className="text-text-muted font-body text-body mb-6">

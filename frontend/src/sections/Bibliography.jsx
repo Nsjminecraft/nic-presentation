@@ -96,7 +96,7 @@ export default function Bibliography() {
           10 — Sources
         </motion.p>
         <motion.h2
-          className="font-heading text-section text-text-primary mb-4"
+          className="font-heading text-2xl md:text-section text-text-primary mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -129,7 +129,7 @@ export default function Hero() {
             <div key={i} className="glass-panel p-4 text-center">
               <motion.p
                 className="font-heading font-bold"
-                style={{ fontSize: '2rem', color: stat.color }}
+                style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', color: stat.color }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1 + i * 0.3 }}

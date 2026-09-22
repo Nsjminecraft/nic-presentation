@@ -21,7 +21,7 @@ export default function WhatIsNic() {
   return (
     <SectionWrapper id="what-is-nic">
       <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="max-w-6xl mx-auto">
-        <motion.h2 variants={item} className="font-heading text-section gradient-text mb-4">
+        <motion.h2 variants={item} className="font-heading text-2xl md:text-section gradient-text mb-4">
           What is a Network Interface Card?
         </motion.h2>
 

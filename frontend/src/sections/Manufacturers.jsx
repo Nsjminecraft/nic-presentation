@@ -83,7 +83,7 @@ export default function Manufacturers() {
           07 — Manufacturers & Costs
         </motion.p>
         <motion.h2
-          className="font-heading text-section text-text-primary mb-4"
+          className="font-heading text-2xl md:text-section text-text-primary mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
