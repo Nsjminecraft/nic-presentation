@@ -213,7 +213,7 @@ export default function Manufacturers() {
           {/* Market Share Donut */}
           <div className="glass-panel p-8">
             <h3 className="font-heading text-sub text-text-primary mb-6">Market Presence</h3>
-            <div className="flex items-center gap-8">
+            <div className="flex flex-col md:flex-row items-center gap-8">
               <svg viewBox="0 0 120 120" className="w-32 h-32 shrink-0">
                 {[
                   { brand: 'Realtek', share: 35, color: '#7c3aed', offset: 0 },
@@ -238,8 +238,8 @@ export default function Manufacturers() {
                     transition={{ duration: 0.8, delay: i * 0.1 }}
                   />
                 ))}
-                <text x="60" y="55" textAnchor="middle" fill="#e4e4e7" fontSize="10" fontWeight="600">NIC</text>
-                <text x="60" y="70" textAnchor="middle" fill="#a1a1aa" fontSize="8">Market</text>
+                <text x="60" y="55" textAnchor="middle" fill="#e4e4e7" fontSize="12" fontWeight="600">NIC</text>
+                <text x="60" y="70" textAnchor="middle" fill="#a1a1aa" fontSize="10">Market</text>
               </svg>
               <div className="space-y-2 flex-1">
                 {[
@@ -289,14 +289,14 @@ export default function Manufacturers() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.15 }}
                   />
-                  <text x={point.x} y={point.y - 14} textAnchor="middle" fill="#e4e4e7" fontSize="7">{point.brand}</text>
-                  <text x={point.x} y={point.y + 20} textAnchor="middle" fill="#a1a1aa" fontSize="6">{point.spd}G/${point.prc}</text>
+                  <text x={point.x} y={point.y - 14} textAnchor="middle" fill="#e4e4e7" fontSize="9">{point.brand}</text>
+                  <text x={point.x} y={point.y + 20} textAnchor="middle" fill="#a1a1aa" fontSize="8">{point.spd}G/${point.prc}</text>
                 </g>
               ))}
 
               {/* Axis labels */}
-              <text x="135" y="170" textAnchor="middle" fill="#a1a1aa" fontSize="8">Price →</text>
-              <text x="15" y="85" textAnchor="middle" fill="#a1a1aa" fontSize="8" transform="rotate(-90, 15, 85)">Speed →</text>
+              <text x="135" y="170" textAnchor="middle" fill="#a1a1aa" fontSize="10">Price →</text>
+              <text x="15" y="85" textAnchor="middle" fill="#a1a1aa" fontSize="10" transform="rotate(-90, 15, 85)">Speed →</text>
             </svg>
           </div>
         </motion.div>

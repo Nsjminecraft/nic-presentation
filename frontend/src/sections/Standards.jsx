@@ -180,16 +180,16 @@ export default function Standards() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.15 }}
                 />
-                <text x={point.x} y={point.y - 12} textAnchor="middle" fill="#e4e4e7" fontSize="9" fontWeight="500">{point.speed}</text>
-                <text x={point.x} y="185" textAnchor="middle" fill="#a1a1aa" fontSize="8">{point.year}</text>
+                <text x={point.x} y={point.y - 12} textAnchor="middle" fill="#e4e4e7" fontSize="11" fontWeight="500">{point.speed}</text>
+                <text x={point.x} y="185" textAnchor="middle" fill="#a1a1aa" fontSize="10">{point.year}</text>
               </g>
             ))}
 
             {/* Y-axis labels */}
-            <text x="30" y="45" textAnchor="end" fill="#a1a1aa" fontSize="8">40+</text>
-            <text x="30" y="80" textAnchor="end" fill="#a1a1aa" fontSize="8">25</text>
-            <text x="30" y="115" textAnchor="end" fill="#a1a1aa" fontSize="8">10</text>
-            <text x="30" y="150" textAnchor="end" fill="#a1a1aa" fontSize="8">1</text>
+            <text x="30" y="45" textAnchor="end" fill="#a1a1aa" fontSize="10">40+</text>
+            <text x="30" y="80" textAnchor="end" fill="#a1a1aa" fontSize="10">25</text>
+            <text x="30" y="115" textAnchor="end" fill="#a1a1aa" fontSize="10">10</text>
+            <text x="30" y="150" textAnchor="end" fill="#a1a1aa" fontSize="10">1</text>
           </svg>
         </motion.div>
       </motion.div>

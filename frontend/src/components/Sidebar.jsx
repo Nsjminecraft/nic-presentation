@@ -19,6 +19,7 @@ const sections = [
 export default function Sidebar() {
   const [activeSection, setActiveSection] = useState('hero')
   const [collapsed, setCollapsed] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const handler = (e) => {
@@ -30,14 +31,45 @@ export default function Sidebar() {
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setMobileOpen(false)
   }
 
   return (
-    <motion.nav
-      initial={{ x: -280 }}
-      animate={{ x: 0, width: collapsed ? 64 : 240 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed left-0 top-0 h-screen z-40 bg-bg-surface/90 backdrop-blur-2xl border-r border-white/5 flex flex-col overflow-hidden"
+    <>
+      {/* Mobile hamburger button */}
+      <button
+        onClick={() => setMobileOpen(!mobileOpen)}
+        className="md:hidden fixed top-4 left-4 z-50 w-10 h-10 rounded-xl bg-bg-surface/90 backdrop-blur-xl border border-white/10 flex items-center justify-center text-text-primary"
+        aria-label="Toggle menu"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          {mobileOpen ? (
+            <path d="M18 6L6 18M6 6l12 12" />
+          ) : (
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          )}
+        </svg>
+      </button>
+
+      {/* Mobile backdrop */}
+      {mobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/60 z-30"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      <motion.nav
+        initial={false}
+        animate={{
+          x: 0,
+          width: typeof window !== 'undefined' && window.innerWidth < 768 ? 240 : (collapsed ? 64 : 240),
+        }}
+        className={`fixed left-0 top-0 h-screen z-40 bg-bg-surface/90 backdrop-blur-2xl border-r border-white/5 flex flex-col overflow-hidden transition-transform duration-300 ${
+          typeof window !== 'undefined' && window.innerWidth < 768
+            ? mobileOpen ? 'translate-x-0' : '-translate-x-full'
+            : ''
+        }`}
     >
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-white/5 min-h-[64px]">
@@ -62,10 +94,10 @@ export default function Sidebar() {
         )}
       </div>
 
-      {/* Toggle */}
+      {/* Toggle - desktop only */}
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-3 top-20 w-6 h-6 rounded-full bg-bg-elevated border border-white/10 flex items-center justify-center text-text-muted hover:text-accent-cyan transition-colors z-50"
+        className="hidden md:flex absolute -right-3 top-20 w-6 h-6 rounded-full bg-bg-elevated border border-white/10 items-center justify-center text-text-muted hover:text-accent-cyan transition-colors z-50"
       >
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
           {collapsed ? <path d="M4 2l4 4-4 4" /> : <path d="M8 2l-4 4 4 4" />}
@@ -111,5 +143,6 @@ export default function Sidebar() {
         </div>
       )}
     </motion.nav>
+    </>
   )
 }

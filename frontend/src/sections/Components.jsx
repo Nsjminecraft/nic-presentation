@@ -15,6 +15,10 @@ export default function Components() {
 
   const [hovered, setHovered] = useState(null)
 
+  const toggleComponent = (id) => {
+    setHovered(prev => prev === id ? null : id)
+  }
+
   const components = [
     { id: 'pcie', name: 'PCIe Interface', desc: 'Bus interface connecting NIC to motherboard, provides power and data pathway', x: 70, y: 220, w: 160, h: 40 },
     { id: 'rom', name: 'Boot ROM', desc: 'Enables network boot (PXE) — loads OS from network server', x: 70, y: 150, w: 80, h: 45 },
@@ -34,7 +38,7 @@ export default function Components() {
 
         <motion.p variants={item} className="font-body text-body text-text-muted mb-16 max-w-3xl">
           A NIC contains specialized components working together to handle network communication.
-          Hover over each part to learn its function.
+          Tap or click each part to learn its function.
         </motion.p>
 
         <motion.div variants={item} className="glass-panel p-8 mb-12">
@@ -54,7 +58,7 @@ export default function Components() {
 
             {/* Components */}
             {components.map((comp) => (
-              <g key={comp.id} onMouseEnter={() => setHovered(comp.id)} onMouseLeave={() => setHovered(null)}>
+              <g key={comp.id} onClick={() => toggleComponent(comp.id)} className="cursor-pointer">
                 <motion.rect
                   x={comp.x} y={comp.y} width={comp.w} height={comp.h}
                   rx="4"
@@ -63,7 +67,7 @@ export default function Components() {
                   stroke={hovered === comp.id ? '#00d4ff' : '#00d4ff'}
                   strokeWidth={hovered === comp.id ? 2 : 1.5}
                   strokeOpacity={hovered === comp.id ? 1 : 0.5}
-                  className="cursor-pointer transition-all"
+                  className="transition-all"
                 />
                 <text x={comp.x + comp.w / 2} y={comp.y + comp.h / 2} textAnchor="middle" dominantBaseline="middle" fill="#e4e4e7" fontSize="9" fontWeight="500" className="pointer-events-none">
                   {comp.name}
@@ -85,8 +89,7 @@ export default function Components() {
               key={i}
               variants={item}
               className={`glass-panel p-4 hover-card cursor-pointer ${hovered === comp.id ? 'border-accent-cyan/50' : ''}`}
-              onMouseEnter={() => setHovered(comp.id)}
-              onMouseLeave={() => setHovered(null)}
+              onClick={() => toggleComponent(comp.id)}
             >
               <h3 className="font-heading text-body text-text-primary mb-2">{comp.name}</h3>
               <p className="text-small text-text-muted">{comp.desc}</p>

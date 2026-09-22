@@ -96,7 +96,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.h1 variants={item} className="font-heading text-hero gradient-text mb-6 text-balance">
+        <motion.h1 variants={item} className="font-heading text-4xl md:text-hero gradient-text mb-6 text-balance">
           Network Interface Card
         </motion.h1>
 
@@ -119,7 +119,7 @@ export default function Hero() {
         {/* Animated Speed Stats */}
         <motion.div
           variants={item}
-          className="mt-16 grid grid-cols-3 gap-6 max-w-xl mx-auto"
+          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-xl mx-auto"
         >
           {[
             { value: '100', unit: 'Gbps', label: 'Max Speed', color: '#00d4ff' },

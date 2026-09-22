@@ -49,14 +49,14 @@ export default function WhatIsNic() {
         {/* Data flow diagram */}
         <motion.div variants={item} className="glass-panel p-8">
           <h3 className="font-heading text-sub text-text-primary mb-8 text-center">Data Flow Path</h3>
-          <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-col items-center gap-2">
               <div className="w-20 h-20 glass-panel flex items-center justify-center text-3xl">💻</div>
               <p className="text-small text-text-muted">Computer</p>
             </div>
 
             <motion.div
-              className="flex-1 h-0.5 bg-gradient-to-r from-accent-cyan to-transparent min-w-[60px]"
+              className="hidden md:flex flex-1 h-0.5 bg-gradient-to-r from-accent-cyan to-transparent min-w-[60px]"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
@@ -74,7 +74,7 @@ export default function WhatIsNic() {
             </div>
 
             <motion.div
-              className="flex-1 h-0.5 bg-gradient-to-r from-accent-purple to-transparent min-w-[60px]"
+              className="hidden md:flex flex-1 h-0.5 bg-gradient-to-r from-accent-purple to-transparent min-w-[60px]"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
             />
@@ -85,7 +85,7 @@ export default function WhatIsNic() {
             </div>
 
             <motion.div
-              className="flex-1 h-0.5 bg-gradient-to-r from-accent-cyan to-transparent min-w-[60px]"
+              className="hidden md:flex flex-1 h-0.5 bg-gradient-to-r from-accent-cyan to-transparent min-w-[60px]"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2, repeat: Infinity, delay: 1 }}
             />

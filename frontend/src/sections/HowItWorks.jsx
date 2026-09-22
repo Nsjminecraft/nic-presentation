@@ -35,13 +35,13 @@ export default function HowItWorks() {
 
         {/* Flow diagram */}
         <motion.div variants={item} className="mb-16 relative">
-          <div className="flex items-center justify-between flex-wrap gap-4 glass-panel p-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 glass-panel p-8">
             <div className="flex flex-col items-center gap-2">
               <div className="w-16 h-16 rounded-full glass-panel flex items-center justify-center text-2xl">💻</div>
               <p className="text-small text-text-muted text-center">App</p>
             </div>
 
-            <motion.div className="flex-1 h-1 bg-gradient-to-r from-accent-cyan/50 to-accent-purple/50 rounded min-w-[40px]"
+            <motion.div className="hidden md:flex flex-1 h-1 bg-gradient-to-r from-accent-cyan/50 to-accent-purple/50 rounded min-w-[40px]"
               animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }} />
 
             <div className="flex flex-col items-center gap-2">
@@ -49,7 +49,7 @@ export default function HowItWorks() {
               <p className="text-small text-text-muted text-center">OS</p>
             </div>
 
-            <motion.div className="flex-1 h-1 bg-gradient-to-r from-accent-purple/50 to-accent-cyan/50 rounded min-w-[40px]"
+            <motion.div className="hidden md:flex flex-1 h-1 bg-gradient-to-r from-accent-purple/50 to-accent-cyan/50 rounded min-w-[40px]"
               animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity, delay: 0.3 }} />
 
             <div className="flex flex-col items-center gap-2">
@@ -62,7 +62,7 @@ export default function HowItWorks() {
               <p className="text-small text-text-muted text-center">NIC</p>
             </div>
 
-            <motion.div className="flex-1 h-1 bg-gradient-to-r from-accent-cyan/50 to-accent-purple/50 rounded min-w-[40px]"
+            <motion.div className="hidden md:flex flex-1 h-1 bg-gradient-to-r from-accent-cyan/50 to-accent-purple/50 rounded min-w-[40px]"
               animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity, delay: 0.6 }} />
 
             <div className="flex flex-col items-center gap-2">
@@ -189,8 +189,8 @@ export default function HowItWorks() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.2 }}
                 />
-                <text x={point.x} y={point.y - 18} textAnchor="middle" fill="#e4e4e7" fontSize="9" fontWeight="500">{point.label}</text>
-                <text x={point.x} y={point.y + 28} textAnchor="middle" fill="#a1a1aa" fontSize="8">{point.sub}</text>
+                <text x={point.x} y={point.y - 18} textAnchor="middle" fill="#e4e4e7" fontSize="11" fontWeight="500">{point.label}</text>
+                <text x={point.x} y={point.y + 28} textAnchor="middle" fill="#a1a1aa" fontSize="10">{point.sub}</text>
               </g>
             ))}
           </svg>

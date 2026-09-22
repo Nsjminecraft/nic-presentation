@@ -147,7 +147,7 @@ export default function Types() {
                   <span className="text-text-muted text-small font-medium">{item.type}</span>
                   <span className="text-accent-cyan text-small font-mono">{item.performance}%</span>
                 </div>
-                <div className="grid grid-cols-4 gap-2 text-xs">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                   <div>
                     <div className="h-1.5 bg-bg-elevated rounded-full overflow-hidden mb-1">
                       <motion.div

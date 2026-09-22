@@ -214,17 +214,17 @@ export default function Future() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 1 + i * 0.15 }}
                 />
-                <text x={point.x} y={point.y - 12} textAnchor="middle" fill="#e4e4e7" fontSize="8" fontWeight="500">{point.speed}</text>
-                <text x={point.x} y="198" textAnchor="middle" fill="#a1a1aa" fontSize="8">{point.year}</text>
+                <text x={point.x} y={point.y - 12} textAnchor="middle" fill="#e4e4e7" fontSize="10" fontWeight="500">{point.speed}</text>
+                <text x={point.x} y="198" textAnchor="middle" fill="#a1a1aa" fontSize="10">{point.year}</text>
               </g>
             ))}
 
             {/* Y-axis */}
-            <text x="30" y="35" textAnchor="end" fill="#a1a1aa" fontSize="8">800</text>
-            <text x="30" y="73" textAnchor="end" fill="#a1a1aa" fontSize="8">400</text>
-            <text x="30" y="111" textAnchor="end" fill="#a1a1aa" fontSize="8">100</text>
-            <text x="30" y="149" textAnchor="end" fill="#a1a1aa" fontSize="8">25</text>
-            <text x="30" y="185" textAnchor="end" fill="#a1a1aa" fontSize="8">1</text>
+            <text x="30" y="35" textAnchor="end" fill="#a1a1aa" fontSize="10">800</text>
+            <text x="30" y="73" textAnchor="end" fill="#a1a1aa" fontSize="10">400</text>
+            <text x="30" y="111" textAnchor="end" fill="#a1a1aa" fontSize="10">100</text>
+            <text x="30" y="149" textAnchor="end" fill="#a1a1aa" fontSize="10">25</text>
+            <text x="30" y="185" textAnchor="end" fill="#a1a1aa" fontSize="10">1</text>
           </svg>
         </motion.div>
       </div>

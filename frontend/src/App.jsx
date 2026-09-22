@@ -31,7 +31,7 @@ export default function App() {
       <ProgressBar progress={progress} />
       <Sidebar />
 
-      <main className="ml-[240px] transition-all duration-300">
+      <main className="md:ml-[240px] transition-all duration-300">
         <Hero />
         <WhatIsNic />
         <Types />
