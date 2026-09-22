@@ -23,6 +23,66 @@ const questions = [
     ],
     explanation: 'IEEE 802.3 is the standard that defines wired Ethernet. 802.11 is WiFi, 802.15 is Bluetooth, and 802.5 was Token Ring.',
   },
+  {
+    q: 'Which component of a NIC stores the unique MAC address?',
+    options: [
+      { text: 'MAC Controller', correct: false },
+      { text: 'PHY Transceiver', correct: false },
+      { text: 'EEPROM', correct: true },
+      { text: 'PCIe Interface', correct: false },
+    ],
+    explanation: 'The EEPROM (Electrically Erasable Programmable Read-Only Memory) stores the NIC\'s unique MAC address and configuration data.',
+  },
+  {
+    q: 'What is the maximum speed of modern high-end NICs?',
+    options: [
+      { text: '1 Gbps', correct: false },
+      { text: '10 Gbps', correct: false },
+      { text: '25 Gbps', correct: false },
+      { text: '100 Gbps', correct: true },
+    ],
+    explanation: 'High-end data center NICs can reach speeds up to 100 Gbps using QSFP28 connectors, though consumer NICs typically max out at 1–10 Gbps.',
+  },
+  {
+    q: 'Which connector type is commonly used for standard Ethernet cables?',
+    options: [
+      { text: 'USB-C', correct: false },
+      { text: 'RJ-45', correct: true },
+      { text: 'HDMI', correct: false },
+      { text: 'SFP+', correct: false },
+    ],
+    explanation: 'RJ-45 is the standard 8-pin connector used for Cat5e/Cat6 Ethernet cables. SFP+ is used for fiber/10GbE, not standard Ethernet.',
+  },
+  {
+    q: 'Which company is a major manufacturer of network interface cards?',
+    options: [
+      { text: 'NVIDIA / Mellanox', correct: true },
+      { text: 'Samsung', correct: false },
+      { text: 'Apple', correct: false },
+      { text: 'Seagate', correct: false },
+    ],
+    explanation: 'NVIDIA (through its acquisition of Mellanox) is a leading NIC manufacturer for data centers. Intel, Realtek, and Broadcom are other major players.',
+  },
+  {
+    q: 'What does the PHY transceiver in a NIC do?',
+    options: [
+      { text: 'Stores the MAC address', correct: false },
+      { text: 'Converts digital data to analog signals for the cable', correct: true },
+      { text: 'Connects the NIC to the motherboard', correct: false },
+      { text: 'Handles error detection only', correct: false },
+    ],
+    explanation: 'The PHY (Physical Layer) transceiver converts digital data from the MAC controller into analog electrical or optical signals that travel over the network cable.',
+  },
+  {
+    q: 'Which bus interface do modern discrete NICs use to connect to the motherboard?',
+    options: [
+      { text: 'AGP', correct: false },
+      { text: 'PCI Express (PCIe)', correct: true },
+      { text: 'ISA', correct: false },
+      { text: 'USB 2.0', correct: false },
+    ],
+    explanation: 'Modern NICs use PCIe (PCI Express) — typically Gen 3, 4, or 5 — for high-bandwidth communication with the motherboard. Older NICs used AGP or ISA.',
+  },
 ]
 
 export default function Quiz() {
@@ -167,13 +227,13 @@ export default function Quiz() {
               <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan/5 to-accent-purple/5" />
               <div className="relative z-10">
                 <div className="text-6xl mb-4">
-                  {score === 2 ? '🎉' : score === 1 ? '👍' : '📚'}
+                  {score >= 6 ? '🎉' : score >= 4 ? '👍' : score >= 2 ? '📚' : '😅'}
                 </div>
                 <p className="font-heading text-display font-bold gradient-text mb-2">
                   {score} / {questions.length}
                 </p>
                 <p className="text-text-muted font-body text-body mb-6">
-                  {score === 2 ? 'Perfect score! You nailed it.' : score === 1 ? 'Not bad — one more review and you\'re set.' : 'Time to re-read the presentation!'}
+                  {score === 7 ? 'Perfect score! You nailed it.' : score >= 5 ? 'Great job! You know your NICs.' : score >= 3 ? 'Not bad — a quick review and you\'re set.' : 'Time to re-read the presentation!'}
                 </p>
                 <button
                   onClick={reset}
