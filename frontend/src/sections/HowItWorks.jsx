@@ -1,33 +1,5 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
-
-function VideoEmbed({ videoId, title }) {
-  const [error, setError] = useState(false)
-  if (error) return (
-    <div className="glass-panel p-8 text-center">
-      <p className="text-text-muted mb-4">Video: {title}</p>
-      <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" className="text-accent-cyan underline">
-        Watch on YouTube
-      </a>
-    </div>
-  )
-  return (
-    <div className="glass-panel p-4">
-      <p className="text-xs text-text-dim mb-3 text-center">{title}</p>
-      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-        <iframe
-          src={`https://www.youtube.com/embed/${videoId}`}
-          title={title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          onError={() => setError(true)}
-          className="absolute inset-0 w-full h-full rounded-lg"
-        />
-      </div>
-    </div>
-  )
-}
 
 export default function HowItWorks() {
   const container = {
@@ -98,14 +70,6 @@ export default function HowItWorks() {
               <p className="text-small text-text-muted text-center">Network</p>
             </div>
           </div>
-        </motion.div>
-
-        {/* Video: How a NIC Works */}
-        <motion.div variants={item} className="mt-12 mb-12">
-          <VideoEmbed
-            videoId="Z8wKp3T2GQw"
-            title="How Network Interface Cards Work — Explained"
-          />
         </motion.div>
 
         {/* Detailed steps */}
