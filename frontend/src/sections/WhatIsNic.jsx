@@ -1,5 +1,50 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
+
+function MediaImage({ src, alt, caption, className = '' }) {
+  const [error, setError] = useState(false)
+  if (error) return null
+  return (
+    <figure className={`text-center ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        onError={() => setError(true)}
+        className="rounded-xl border border-white/10 shadow-2xl mx-auto max-w-full"
+        loading="lazy"
+      />
+      {caption && <figcaption className="text-xs text-text-dim mt-2 italic">{caption}</figcaption>}
+    </figure>
+  )
+}
+
+function VideoEmbed({ videoId, title }) {
+  const [error, setError] = useState(false)
+  if (error) return (
+    <div className="glass-panel p-8 text-center">
+      <p className="text-text-muted mb-4">Video: {title}</p>
+      <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" className="text-accent-cyan underline">
+        Watch on YouTube
+      </a>
+    </div>
+  )
+  return (
+    <div className="glass-panel p-4">
+      <p className="text-xs text-text-dim mb-3 text-center">{title}</p>
+      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          onError={() => setError(true)}
+          className="absolute inset-0 w-full h-full rounded-lg"
+        />
+      </div>
+    </div>
+  )
+}
 
 export default function WhatIsNic() {
   const container = {
@@ -95,6 +140,28 @@ export default function WhatIsNic() {
               <p className="text-small text-text-muted">Network</p>
             </div>
           </div>
+        </motion.div>
+
+        {/* Real NIC Photos */}
+        <motion.div variants={item} className="mt-16 grid md:grid-cols-2 gap-8">
+          <MediaImage
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Network_card.jpg/640px-Network_card.jpg"
+            alt="Close-up photo of a real Ethernet network interface card showing chips, connector, and circuit board"
+            caption="A real Ethernet NIC with visible MAC controller, PHY chip, and RJ-45 connector"
+          />
+          <MediaImage
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ethernet_cable.jpg/640px-Ethernet_cable.jpg"
+            alt="Photo of an Ethernet cable with RJ-45 connector"
+            caption="Ethernet cable with RJ-45 connector — the physical medium NICs use to transmit data"
+          />
+        </motion.div>
+
+        {/* Video: How Networks Work */}
+        <motion.div variants={item} className="mt-12">
+          <VideoEmbed
+            videoId="8NLgjEwqb6k"
+            title="How Computer Networks Work"
+          />
         </motion.div>
 
         {/* Bullet points */}

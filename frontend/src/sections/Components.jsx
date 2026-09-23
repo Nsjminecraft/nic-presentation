@@ -2,6 +2,50 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
 
+function MediaImage({ src, alt, caption, className = '' }) {
+  const [error, setError] = useState(false)
+  if (error) return null
+  return (
+    <figure className={`text-center ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        onError={() => setError(true)}
+        className="rounded-xl border border-white/10 shadow-2xl mx-auto max-w-full"
+        loading="lazy"
+      />
+      {caption && <figcaption className="text-xs text-text-dim mt-2 italic">{caption}</figcaption>}
+    </figure>
+  )
+}
+
+function VideoEmbed({ videoId, title }) {
+  const [error, setError] = useState(false)
+  if (error) return (
+    <div className="glass-panel p-8 text-center">
+      <p className="text-text-muted mb-4">Video: {title}</p>
+      <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" className="text-accent-cyan underline">
+        Watch on YouTube
+      </a>
+    </div>
+  )
+  return (
+    <div className="glass-panel p-4">
+      <p className="text-xs text-text-dim mb-3 text-center">{title}</p>
+      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          onError={() => setError(true)}
+          className="absolute inset-0 w-full h-full rounded-lg"
+        />
+      </div>
+    </div>
+  )
+}
+
 export default function Components() {
   const container = {
     hidden: { opacity: 0 },
@@ -80,6 +124,24 @@ export default function Components() {
               <rect key={i} x={80 + i * 12} y="262" width="8" height="15" fill="#00d4ff" fillOpacity="0.25" rx="1" />
             ))}
           </svg>
+        </motion.div>
+
+        {/* Real NIC photo */}
+        <motion.div variants={item} className="mb-12">
+          <MediaImage
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Network_card.jpg/640px-Network_card.jpg"
+            alt="Real Ethernet NIC showing internal components"
+            caption="A real Ethernet NIC — compare with the diagram above to identify the MAC controller, PHY chip, EEPROM, and RJ-45 connector"
+            className="max-w-lg mx-auto"
+          />
+        </motion.div>
+
+        {/* Video: NIC Hardware Deep Dive */}
+        <motion.div variants={item} className="mb-12">
+          <VideoEmbed
+            videoId="tMCBN3X8x1A"
+            title="Network Interface Card — Hardware Deep Dive"
+          />
         </motion.div>
 
         {/* Component details */}

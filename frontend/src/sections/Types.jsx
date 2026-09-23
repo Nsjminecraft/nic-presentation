@@ -1,5 +1,23 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
+
+function MediaImage({ src, alt, caption, className = '' }) {
+  const [error, setError] = useState(false)
+  if (error) return null
+  return (
+    <figure className={`text-center ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        onError={() => setError(true)}
+        className="rounded-xl border border-white/10 shadow-2xl mx-auto max-w-full"
+        loading="lazy"
+      />
+      {caption && <figcaption className="text-xs text-text-dim mt-2 italic">{caption}</figcaption>}
+    </figure>
+  )
+}
 
 export default function Types() {
   const container = {
@@ -125,6 +143,28 @@ export default function Types() {
             </motion.div>
           ))}
         </div>
+
+        {/* Real photos of NIC types */}
+        <motion.div variants={item} className="mt-12">
+          <h3 className="font-heading text-sub text-text-primary mb-6 text-center">Real NIC Hardware</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <MediaImage
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Network_card.jpg/640px-Network_card.jpg"
+              alt="PCIe Ethernet network card"
+              caption="PCIe NIC — the most common desktop expansion card"
+            />
+            <MediaImage
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/USB_to_Ethernet_adapter.jpg/640px-USB_to_Ethernet_adapter.jpg"
+              alt="USB to Ethernet adapter"
+              caption="USB NIC adapter — portable plug-and-play networking"
+            />
+            <MediaImage
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Wireless_card.jpg/640px-Wireless_card.jpg"
+              alt="Wireless WiFi network card"
+              caption="Wireless NIC with antenna — WiFi connectivity"
+            />
+          </div>
+        </motion.div>
 
         <motion.div variants={item} className="mt-12 glass-panel p-6">
           <p className="text-small text-text-muted text-center">

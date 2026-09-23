@@ -1,5 +1,23 @@
 import SectionWrapper from '../components/SectionWrapper'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+
+function MediaImage({ src, alt, caption, className = '' }) {
+  const [error, setError] = useState(false)
+  if (error) return null
+  return (
+    <figure className={`text-center ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        onError={() => setError(true)}
+        className="rounded-xl border border-white/10 shadow-2xl mx-auto max-w-full"
+        loading="lazy"
+      />
+      {caption && <figcaption className="text-xs text-text-dim mt-2 italic">{caption}</figcaption>}
+    </figure>
+  )
+}
 
 const brands = [
   {
@@ -164,6 +182,28 @@ export default function Manufacturers() {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Real NIC product photos */}
+        <motion.div
+          className="mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="font-heading text-sub text-text-primary mb-6 text-center">Real NIC Products</h3>
+          <div className="grid sm:grid-cols-2 gap-6">
+            <MediaImage
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Network_card.jpg/640px-Network_card.jpg"
+              alt="Intel Ethernet network interface card"
+              caption="A classic Intel Ethernet NIC — the industry standard for desktop and server networking"
+            />
+            <MediaImage
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Intel_Network_Connections_Utility_-_Main_Window.png/640px-Intel_Network_Connections_Utility_-_Main_Window.png"
+              alt="Intel Network Connections utility showing NIC configuration"
+              caption="Intel NIC management software showing network adapter configuration"
+            />
+          </div>
         </motion.div>
 
         {/* Price range bar */}

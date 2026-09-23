@@ -1,5 +1,50 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
+
+function MediaImage({ src, alt, caption, className = '' }) {
+  const [error, setError] = useState(false)
+  if (error) return null
+  return (
+    <figure className={`text-center ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        onError={() => setError(true)}
+        className="rounded-xl border border-white/10 shadow-2xl mx-auto max-w-full"
+        loading="lazy"
+      />
+      {caption && <figcaption className="text-xs text-text-dim mt-2 italic">{caption}</figcaption>}
+    </figure>
+  )
+}
+
+function VideoEmbed({ videoId, title }) {
+  const [error, setError] = useState(false)
+  if (error) return (
+    <div className="glass-panel p-8 text-center">
+      <p className="text-text-muted mb-4">Video: {title}</p>
+      <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" className="text-accent-cyan underline">
+        Watch on YouTube
+      </a>
+    </div>
+  )
+  return (
+    <div className="glass-panel p-4">
+      <p className="text-xs text-text-dim mb-3 text-center">{title}</p>
+      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          onError={() => setError(true)}
+          className="absolute inset-0 w-full h-full rounded-lg"
+        />
+      </div>
+    </div>
+  )
+}
 
 export default function Standards() {
   const container = {
@@ -191,6 +236,24 @@ export default function Standards() {
             <text x="30" y="115" textAnchor="end" fill="#a1a1aa" fontSize="10">10</text>
             <text x="30" y="150" textAnchor="end" fill="#a1a1aa" fontSize="10">1</text>
           </svg>
+        </motion.div>
+
+        {/* Real connector photos */}
+        <motion.div
+          className="mt-12 grid sm:grid-cols-2 gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <MediaImage
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ethernet_cable.jpg/640px-Ethernet_cable.jpg"
+            alt="Ethernet cable with RJ-45 connector used in 1GbE and 10GbE standards"
+            caption="RJ-45 Ethernet cable — the physical standard for 1GbE through 10GbE copper connections"
+          />
+          <VideoEmbed
+            videoId="8NLgjEwqb6k"
+            title="Networking Standards Explained"
+          />
         </motion.div>
       </motion.div>
     </SectionWrapper>

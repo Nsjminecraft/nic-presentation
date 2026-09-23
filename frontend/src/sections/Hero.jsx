@@ -1,5 +1,23 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
+
+function MediaImage({ src, alt, caption, className = '' }) {
+  const [error, setError] = useState(false)
+  if (error) return null
+  return (
+    <figure className={`text-center ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        onError={() => setError(true)}
+        className="rounded-xl border border-white/10 shadow-2xl mx-auto max-w-full"
+        loading="lazy"
+      />
+      {caption && <figcaption className="text-xs text-text-dim mt-2 italic">{caption}</figcaption>}
+    </figure>
+  )
+}
 
 export default function Hero() {
   const container = {
@@ -140,6 +158,16 @@ export default function Hero() {
               <p className="text-xs text-text-muted mt-1">{stat.label}</p>
             </div>
           ))}
+        </motion.div>
+
+        {/* Real NIC Photo */}
+        <motion.div variants={item} className="mt-16">
+          <MediaImage
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Network_card.jpg/640px-Network_card.jpg"
+            alt="A real Ethernet network interface card (NIC) with RJ-45 connector and circuitry"
+            caption="A typical Ethernet NIC — the hardware that connects computers to networks (Photo: Wikimedia Commons)"
+            className="max-w-md mx-auto"
+          />
         </motion.div>
       </motion.div>
 
