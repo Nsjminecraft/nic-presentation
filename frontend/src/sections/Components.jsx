@@ -19,32 +19,6 @@ function MediaImage({ src, alt, caption, className = '' }) {
   )
 }
 
-function VideoEmbed({ videoId, title }) {
-  const [error, setError] = useState(false)
-  if (error) return (
-    <div className="glass-panel p-8 text-center">
-      <p className="text-text-muted mb-4">Video: {title}</p>
-      <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" className="text-accent-cyan underline">
-        Watch on YouTube
-      </a>
-    </div>
-  )
-  return (
-    <div className="glass-panel p-4">
-      <p className="text-xs text-text-dim mb-3 text-center">{title}</p>
-      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-        <iframe
-          src={`https://www.youtube.com/embed/${videoId}`}
-          title={title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          onError={() => setError(true)}
-          className="absolute inset-0 w-full h-full rounded-lg"
-        />
-      </div>
-    </div>
-  )
-}
 
 export default function Components() {
   const container = {
@@ -133,14 +107,6 @@ export default function Components() {
             alt="Real Ethernet NIC showing internal components"
             caption="A real Ethernet NIC — compare with the diagram above to identify the MAC controller, PHY chip, EEPROM, and RJ-45 connector"
             className="max-w-lg mx-auto"
-          />
-        </motion.div>
-
-        {/* Video: NIC Hardware Deep Dive */}
-        <motion.div variants={item} className="mb-12">
-          <VideoEmbed
-            videoId="tMCBN3X8x1A"
-            title="Network Interface Card — Hardware Deep Dive"
           />
         </motion.div>
 

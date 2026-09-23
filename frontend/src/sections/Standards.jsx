@@ -19,32 +19,6 @@ function MediaImage({ src, alt, caption, className = '' }) {
   )
 }
 
-function VideoEmbed({ videoId, title }) {
-  const [error, setError] = useState(false)
-  if (error) return (
-    <div className="glass-panel p-8 text-center">
-      <p className="text-text-muted mb-4">Video: {title}</p>
-      <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" className="text-accent-cyan underline">
-        Watch on YouTube
-      </a>
-    </div>
-  )
-  return (
-    <div className="glass-panel p-4">
-      <p className="text-xs text-text-dim mb-3 text-center">{title}</p>
-      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-        <iframe
-          src={`https://www.youtube.com/embed/${videoId}`}
-          title={title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          onError={() => setError(true)}
-          className="absolute inset-0 w-full h-full rounded-lg"
-        />
-      </div>
-    </div>
-  )
-}
 
 export default function Standards() {
   const container = {
@@ -249,10 +223,6 @@ export default function Standards() {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ethernet_cable.jpg/640px-Ethernet_cable.jpg"
             alt="Ethernet cable with RJ-45 connector used in 1GbE and 10GbE standards"
             caption="RJ-45 Ethernet cable — the physical standard for 1GbE through 10GbE copper connections"
-          />
-          <VideoEmbed
-            videoId="8NLgjEwqb6k"
-            title="Networking Standards Explained"
           />
         </motion.div>
       </motion.div>
