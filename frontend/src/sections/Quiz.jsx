@@ -14,16 +14,6 @@ const questions = [
     explanation: 'NIC stands for Network Interface Card — the hardware component that connects a computer to a network.',
   },
   {
-    q: 'Which IEEE standard defines Ethernet?',
-    options: [
-      { text: 'IEEE 802.11', correct: false },
-      { text: 'IEEE 802.15', correct: false },
-      { text: 'IEEE 802.3', correct: true },
-      { text: 'IEEE 802.5', correct: false },
-    ],
-    explanation: 'IEEE 802.3 is the standard that defines wired Ethernet. 802.11 is WiFi, 802.15 is Bluetooth, and 802.5 was Token Ring.',
-  },
-  {
     q: 'Which component of a NIC stores the unique MAC address?',
     options: [
       { text: 'MAC Controller', correct: false },
@@ -32,106 +22,6 @@ const questions = [
       { text: 'PCIe Interface', correct: false },
     ],
     explanation: 'The EEPROM (Electrically Erasable Programmable Read-Only Memory) stores the NIC\'s unique MAC address and configuration data.',
-  },
-  {
-    q: 'What is the maximum speed of modern high-end NICs?',
-    options: [
-      { text: '1 Gbps', correct: false },
-      { text: '10 Gbps', correct: false },
-      { text: '25 Gbps', correct: false },
-      { text: '100 Gbps', correct: true },
-    ],
-    explanation: 'High-end data center NICs can reach speeds up to 100 Gbps using QSFP28 connectors, though consumer NICs typically max out at 1–10 Gbps.',
-  },
-  {
-    q: 'Which connector type is commonly used for standard Ethernet cables?',
-    options: [
-      { text: 'USB-C', correct: false },
-      { text: 'RJ-45', correct: true },
-      { text: 'HDMI', correct: false },
-      { text: 'SFP+', correct: false },
-    ],
-    explanation: 'RJ-45 is the standard 8-pin connector used for Cat5e/Cat6 Ethernet cables. SFP+ is used for fiber/10GbE, not standard Ethernet.',
-  },
-  {
-    q: 'Which company is a major manufacturer of network interface cards?',
-    options: [
-      { text: 'NVIDIA / Mellanox', correct: true },
-      { text: 'Samsung', correct: false },
-      { text: 'Apple', correct: false },
-      { text: 'Seagate', correct: false },
-    ],
-    explanation: 'NVIDIA (through its acquisition of Mellanox) is a leading NIC manufacturer for data centers. Intel, Realtek, and Broadcom are other major players.',
-  },
-  {
-    q: 'What does the PHY transceiver in a NIC do?',
-    options: [
-      { text: 'Stores the MAC address', correct: false },
-      { text: 'Converts digital data to analog signals for the cable', correct: true },
-      { text: 'Connects the NIC to the motherboard', correct: false },
-      { text: 'Handles error detection only', correct: false },
-    ],
-    explanation: 'The PHY (Physical Layer) transceiver converts digital data from the MAC controller into analog electrical or optical signals that travel over the network cable.',
-  },
-  {
-    q: 'Which bus interface do modern discrete NICs use to connect to the motherboard?',
-    options: [
-      { text: 'AGP', correct: false },
-      { text: 'PCI Express (PCIe)', correct: true },
-      { text: 'ISA', correct: false },
-      { text: 'USB 2.0', correct: false },
-    ],
-    explanation: 'Modern NICs use PCIe (PCI Express) — typically Gen 3, 4, or 5 — for high-bandwidth communication with the motherboard. Older NICs used AGP or ISA.',
-  },
-  {
-    q: 'How many bits long is a standard MAC address?',
-    options: [
-      { text: '32 bits', correct: false },
-      { text: '48 bits', correct: true },
-      { text: '64 bits', correct: false },
-      { text: '128 bits', correct: false },
-    ],
-    explanation: 'A MAC address is 48 bits (6 bytes) long, typically written as six groups of two hexadecimal digits separated by colons or hyphens (e.g., 00:1A:2B:3C:4D:5E).',
-  },
-  {
-    q: 'What does "full-duplex" mean in networking?',
-    options: [
-      { text: 'Data can only be received, not sent', correct: false },
-      { text: 'Data can be sent and received at the same time', correct: true },
-      { text: 'Data is sent over two separate cables', correct: false },
-      { text: 'The connection speed is doubled', correct: false },
-    ],
-    explanation: 'Full-duplex means the NIC can send and receive data simultaneously. Half-duplex only allows one direction at a time, like a walkie-talkie.',
-  },
-  {
-    q: 'What is the typical Maximum Transmission Unit (MTU) for standard Ethernet?',
-    options: [
-      { text: '512 bytes', correct: false },
-      { text: '1500 bytes', correct: true },
-      { text: '4096 bytes', correct: false },
-      { text: '65535 bytes', correct: false },
-    ],
-    explanation: 'Standard Ethernet has an MTU of 1500 bytes — the largest payload a single frame can carry. Jumbo frames (up to ~9000 bytes) are used in some data centers.',
-  },
-  {
-    q: 'Which feature allows a NIC to wake a sleeping computer when a network packet arrives?',
-    options: [
-      { text: 'NAT Traversal', correct: false },
-      { text: 'Wake-on-LAN (WoL)', correct: true },
-      { text: 'DHCP Relay', correct: false },
-      { text: 'Port Mirroring', correct: false },
-    ],
-    explanation: 'Wake-on-LAN (WoL) sends a "magic packet" to the NIC\'s MAC address, which triggers the motherboard to power on the system — useful for remote management.',
-  },
-  {
-    q: 'What is the purpose of VLAN tagging on a NIC?',
-    options: [
-      { text: 'To encrypt network traffic', correct: false },
-      { text: 'To separate traffic into different virtual networks on the same physical NIC', correct: true },
-      { text: 'To increase the speed of the NIC', correct: false },
-      { text: 'To compress data before sending', correct: false },
-    ],
-    explanation: 'VLAN (Virtual LAN) tagging lets a single physical NIC handle traffic for multiple logical networks by inserting an 802.1Q tag into each Ethernet frame.',
   },
 ]
 
@@ -277,13 +167,13 @@ export default function Quiz() {
               <div className="absolute inset-0 bg-gradient-to-r from-accent-cyan/5 to-accent-purple/5" />
               <div className="relative z-10">
                 <div className="text-4xl md:text-6xl mb-4">
-                  {score >= 6 ? '🎉' : score >= 4 ? '👍' : score >= 2 ? '📚' : '😅'}
+                  {score === 2 ? '🎉' : score === 1 ? '📚' : '😅'}
                 </div>
                 <p className="font-heading text-3xl md:text-display font-bold gradient-text mb-2">
                   {score} / {questions.length}
                 </p>
                 <p className="text-text-muted font-body text-body mb-6">
-                  {score === 13 ? 'Perfect score! You nailed it.' : score >= 10 ? 'Great job! You know your NICs.' : score >= 6 ? 'Not bad — a quick review and you\'re set.' : 'Time to re-read the presentation!'}
+                  {score === 2 ? 'Perfect score! You nailed it.' : score === 1 ? 'Not bad — a quick review and you\'re set.' : 'Time to re-read the presentation!'}
                 </p>
                 <button
                   onClick={reset}
