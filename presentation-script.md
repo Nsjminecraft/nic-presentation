@@ -161,11 +161,11 @@ Let's do a quick quiz. See how much you remember.
 
 That's right — Network Interface Card. And the three jobs are: enabling communication, providing a unique MAC address, and converting signals between digital and physical form.
 
-**Question 2:** Which IEEE standard defines Ethernet?
+**Question 2:** Which connector type is commonly used for standard Ethernet cables?
 
 *Pause for answers.*
 
-That's right — IEEE 802.3. To give some context: 802.11 is WiFi, 802.15 is Bluetooth, and 802.3 is wired Ethernet — the standard most of us use every day.
+That's right — RJ-45. It's the standard 8-pin connector you see on most Ethernet cables at home and in offices. USB-C and HDMI are for other things, and SFP+ is for fiber optics in data centers.
 
 That's everything I've got. Thanks for listening — the full presentation is on the website if you want to explore more.
 

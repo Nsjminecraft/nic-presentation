@@ -14,14 +14,14 @@ const questions = [
     explanation: 'NIC stands for Network Interface Card — the hardware component that connects a computer to a network.',
   },
   {
-    q: 'Which IEEE standard defines Ethernet?',
+    q: 'Which connector type is commonly used for standard Ethernet cables?',
     options: [
-      { text: 'IEEE 802.11', correct: false },
-      { text: 'IEEE 802.15', correct: false },
-      { text: 'IEEE 802.3', correct: true },
-      { text: 'IEEE 802.5', correct: false },
+      { text: 'USB-C', correct: false },
+      { text: 'RJ-45', correct: true },
+      { text: 'HDMI', correct: false },
+      { text: 'SFP+', correct: false },
     ],
-    explanation: 'IEEE 802.3 is the standard that defines wired Ethernet. 802.11 is WiFi, 802.15 is Bluetooth, and 802.5 was Token Ring.',
+    explanation: 'RJ-45 is the standard 8-pin connector you see on most Ethernet cables at home and in offices.',
   },
 ]
 
