@@ -161,11 +161,11 @@ Let's do a quick quiz. See how much you remember.
 
 That's right — Network Interface Card. And the three jobs are: enabling communication, providing a unique MAC address, and converting signals between digital and physical form.
 
-**Question 2:** Can anyone name the six steps data goes through from your browser to the network?
+**Question 2:** Which IEEE standard defines Ethernet?
 
 *Pause for answers.*
 
-Great — to recap: the app generates data, the OS breaks it into packets, it travels over PCIe to the NIC, the NIC wraps it in a frame with MAC addresses, the PHY converts it to physical signals, and those signals travel to the network.
+That's right — IEEE 802.3. To give some context: 802.11 is WiFi, 802.15 is Bluetooth, and 802.3 is wired Ethernet — the standard most of us use every day.
 
 That's everything I've got. Thanks for listening — the full presentation is on the website if you want to explore more.
 
